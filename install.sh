@@ -2,6 +2,25 @@
 
 # Install script for the project
 
+# Install common libraries
+echo "Installing common libraries..."
+sudo apt update && sudo apt install -y \
+    git \
+    curl \
+    wget \
+    build-essential \
+    python3 \
+    python3-pip \
+    unzip \
+    zip \
+    software-properties-common \
+    silversearcher-ag \
+    tree \
+    htop \
+    terminator \
+
+echo
+
 # Install vimrc
 # Ask user if they want to install the vimrc
 # If 'Y' or 'y', copy the vimrc file to the user's home directory
