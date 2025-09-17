@@ -28,6 +28,7 @@ if [[ "$install_vimrc" == "Y" || "$install_vimrc" == "y" || -z "$install_vimrc" 
 else
     echo "Skipping vimrc installation."
 fi
+echo
 
 # Ask user if install Copilot in vim
 read -p "Do you want to install Copilot in vim? (Y/n): " install_copilot
@@ -63,4 +64,22 @@ if [[ "$install_copilot" == "Y" || "$install_copilot" == "y" || -z "$install_cop
     echo "Copilot installed successfully."
 else
     echo "Skipping Copilot installation."
+fi
+echo
+
+# Set up bash git prompts
+echo "Setting up bash git prompt..."
+# Clone the bash-git-prompt repository
+if [ -d ~/.bash-git-prompt ]; then
+    echo "Warning: ~/.bash-git-prompt already exists."
+else
+    git clone --depth=1 https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt
+fi
+
+# Add to bashrc if not already present
+if ! grep -q "bash-git-prompt" ~/.bashrc; then
+    echo "source ~/.bash-git-prompt/gitprompt.sh" >> ~/.bashrc
+    echo "Bash git prompt set up successfully."
+else
+    echo "Bash git prompt already set up in ~/.bashrc."
 fi
